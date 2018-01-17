@@ -1,89 +1,39 @@
-"use strict";
+'use strict';
 
-console.log('App.js is running');
-
-//JSX - JavaScript XML
-
-var app = {
-    title: "Indecision App",
-    subtitle: "Put your life in the hands of a computer",
-    options: ["One", "Two"]
+var square = function square(x) {
+    return x * x;
 };
-var template = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        app.title
-    ),
-    app.subtitle && React.createElement(
-        "p",
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        "p",
-        null,
-        app.options.length > 0 ? "Here are your options" : "No options"
-    ),
-    React.createElement(
-        "ol",
-        null,
-        React.createElement(
-            "li",
-            null,
-            "Item one"
-        ),
-        React.createElement(
-            "li",
-            null,
-            "Item two"
-        )
-    )
-);
+console.log(square(8));
 
-var user = {
-    name: "Andrew",
-    age: 23,
-    location: "Memphis"
-
+function square1(x) {
+    return x * x;
 };
 
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            "p",
-            null,
-            "Location: ",
-            location
-        );
-    }
-}
-var templateTwo = React.createElement(
-    "div",
-    null,
-    React.createElement(
-        "h1",
-        null,
-        user.name ? user.name : "Anonymous"
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        "p",
-        null,
-        "Age: ",
-        user.age
-    ),
-    getLocation(user.location)
-);
-var appRoot = document.getElementById('app');
+console.log(square1(9));
 
-ReactDOM.render(template, appRoot);
-//with render we provide 2 arguments: the first one is JSX, and the second one 
-//is the DOM element where we want to render it - to make it work in the browser 
-//we need to compile it into JS
-//working with JSX we can only have one root element that is why we wrap h1 an p into div element
-//for better visibility we may break the tags into line and wrap everything into the brackets
-//in curly brackets we provide JS expressions
-//we cannot refer only to an object as we gonna run into an error
-//but we may use object properties and will work fine
+//Arrow function:
+var squareArrow = function squareArrow(x) {
+    return x * x;
+};
+console.log(squareArrow(6));
+//arrow functions are always anonymous we can only assign them to a variable
+
+
+//Arrow function expression syntax:
+var squareArrow1 = function squareArrow1(x) {
+    return x * x;
+};
+//we do not use return in here, the expression itself is explicitly returned 
+console.log(squareArrow1(11));
+
+var fullName = "Bobby Brown";
+var getFirstName = function getFirstName(firstName) {
+    return fullName.split(' ')[0];
+};
+
+console.log(getFirstName(fullName));
+
+var getFirstNameArrowExpression = function getFirstNameArrowExpression(firstName) {
+    return fullName.split(' ')[0];
+};
+console.log(getFirstNameArrowExpression(fullName));
