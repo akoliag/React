@@ -1,94 +1,132 @@
 "use strict";
 
-//arguments object - no longer bound with arrow functions
+console.log('App.js is running');
 
-var add = function add(a, b) {
-    console.log(arguments); //this will throw an error with arrow function
-    //arguments were available in ES5 
-    return a + b;
+//JSX - JavaScript XML
+
+var app = {
+    title: "Indecision App",
+    subtitle: "Put your life in the hands of a computer",
+    options: ["One", "Two"]
 };
-console.log(add(45, 1));
-
-var addArrow = function addArrow(a, b) {
-    return a + b;
-};
-console.log(addArrow(867, 789));
-
-//this keyword -  no longer bound with arrow function as well
+var template = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        app.title
+    ),
+    app.subtitle && React.createElement(
+        "p",
+        null,
+        app.subtitle
+    ),
+    React.createElement(
+        "p",
+        null,
+        app.options.length > 0 ? "Here are your options" : "No options"
+    ),
+    React.createElement(
+        "ol",
+        null,
+        React.createElement(
+            "li",
+            null,
+            "Item one"
+        ),
+        React.createElement(
+            "li",
+            null,
+            "Item two"
+        )
+    )
+);
 
 var user = {
     name: "Andrew",
-    cities: ["Philadelphia", "New York", "Dublin"],
-    printPlacesLived: function printPlacesLived() {
-        var that = this;
-        this.cities.forEach(function (city) {
-            console.log(that.name + " has lived in " + city);
-        });
-    }
+    age: 23,
+    location: "Memphis"
 };
-//if it's not an arrow function we need to find a workaround to make "this" so we assign 
-//it to the const "that"
-user.printPlacesLived();
 
-//with arrow function though it will work:
-
-var user1 = {
-    name: "Andy",
-    cities: ["Philadelphia", "New York", "Dublin"],
-    printPlacesLived: function printPlacesLived() {
-        var _this = this;
-
-        //we cannot use an arrow function in here as we will lose access to this.cities
-        this.cities.forEach(function (city) {
-            console.log(_this.name + " has lived in " + city);
-        });
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            "p",
+            null,
+            "Location: ",
+            location
+        );
     }
+}
+var templateTwo = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        user.name ? user.name : "Anonymous"
+    ),
+    user.age && user.age >= 18 && React.createElement(
+        "p",
+        null,
+        "Age: ",
+        user.age
+    ),
+    getLocation(user.location)
+);
+var appRoot = document.getElementById('app');
+
+ReactDOM.render(template, appRoot);
+//with render we provide 2 arguments: the first one is JSX, and the second one 
+//is the DOM element where we want to render it - to make it work in the browser 
+//we need to compile it into JS
+//working with JSX we can only have one root element that is why we wrap h1 an p into div element
+//for better visibility we may break the tags into line and wrap everything into the brackets
+//in curly brackets we provide JS expressions
+//we cannot refer only to an object as we gonna run into an error
+//but we may use object properties and will work fine
+
+
+var count = 0;
+var addOne = function addOne() {
+    console.log("addOne");
 };
-user1.printPlacesLived();
 
-//ES6 method definition syntax:
-var user2 = {
-    name: "Amy",
-    cities: ["Philadelphia", "New York", "Dublin"],
-    printPlacesLived: function printPlacesLived() {
-        var _this2 = this;
-
-        this.cities.forEach(function (city) {
-            console.log(_this2.name + " has lived in " + city);
-        });
-    }
+var minusOne = function minusOne() {
+    console.log("minusOne");
 };
-user2.printPlacesLived();
 
-//.map method solution instead of forEach means transforming and geeting a new array back:
-var user3 = {
-    name: "Amelia",
-    cities: ["Philadelphia", "New York", "Dublin"],
-    printPlacesLived: function printPlacesLived() {
-        var _this3 = this;
-
-        return this.cities.map(function (city) {
-            return _this3.name + " has visited " + city;
-        });
-        //we can assign it to the variable or we may return it directly
-    }
+var reset = function reset() {
+    console.log("reset");
 };
-console.log(user3.printPlacesLived());
 
-//Challenge:
-var multiplier = {
-    numbers: [10, 20, 30],
-    multiplyBy: 3,
-    multiply: function multiply() {
-        var _this4 = this;
-
-        return this.numbers.map(function (number) {
-            return number * _this4.multiplyBy;
-        });
-    }
-    //numbers - array of numbers
-    //multiplyBy - single number
-    //multiply - return a new arry where the numbers have been multiplied
-
-};
-console.log(multiplier.multiply());
+var templateThree = React.createElement(
+    "div",
+    null,
+    React.createElement(
+        "h1",
+        null,
+        "Count: ",
+        count
+    ),
+    React.createElement(
+        "button",
+        { onClick: addOne },
+        "+1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: minusOne },
+        "-1"
+    ),
+    React.createElement(
+        "button",
+        { onClick: reset },
+        "Reset"
+    )
+);
+console.log(templateThree);
+//class needs to be called className in JSX, as it's a reserved name in JS
+var appRoot1 = document.getElementById('app');
+ReactDOM.render(templateThree, appRoot1);

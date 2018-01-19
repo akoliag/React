@@ -23,7 +23,6 @@ const user = {
     name: "Andrew",
     age: 23,
     location: "Memphis"
-    
 };
 
 function getLocation(location){
@@ -49,3 +48,30 @@ ReactDOM.render(template, appRoot);
 //in curly brackets we provide JS expressions
 //we cannot refer only to an object as we gonna run into an error
 //but we may use object properties and will work fine
+
+
+let count = 0;
+const addOne = () => {
+    console.log("addOne");
+};
+
+const minusOne= () => {
+    console.log("minusOne");
+};
+
+const reset = () => {
+    console.log("reset");
+};
+
+const templateThree = (
+    <div>
+        <h1>Count: {count}</h1>
+        <button onClick={addOne}>+1</button>
+        <button onClick={minusOne}>-1</button>
+        <button onClick={reset}>Reset</button>
+    </div>
+);
+console.log(templateThree);
+//class needs to be called className in JSX, as it's a reserved name in JS
+const appRoot1 = document.getElementById('app');
+ReactDOM.render(templateThree, appRoot1);
