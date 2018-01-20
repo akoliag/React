@@ -52,15 +52,18 @@ ReactDOM.render(template, appRoot);
 
 let count = 0;
 const addOne = () => {
-    console.log("addOne");
+    count++;
+    renderCounterApp();//we need to add it here to make it visible on the page
 };
 
 const minusOne= () => {
-    console.log("minusOne");
+    count--;
+    renderCounterApp();
 };
 
 const reset = () => {
-    console.log("reset");
+    count = 0;
+    renderCounterApp();
 };
 
 const templateThree = (
@@ -75,3 +78,19 @@ console.log(templateThree);
 //class needs to be called className in JSX, as it's a reserved name in JS
 const appRoot1 = document.getElementById('app');
 ReactDOM.render(templateThree, appRoot1);
+
+//manual data binding:
+const renderCounterApp = () => {
+    const templateThree = (
+        <div>
+            <h1>Count: {count}</h1>
+            <button onClick={addOne}>+1</button>
+            <button onClick={minusOne}>-1</button>
+            <button onClick={reset}>Reset</button>
+        </div>
+    );
+    const appRoot1 = document.getElementById('app');
+    ReactDOM.render(templateThree, appRoot1);
+};
+
+renderCounterApp();

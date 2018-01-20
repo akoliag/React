@@ -90,15 +90,18 @@ ReactDOM.render(template, appRoot);
 
 var count = 0;
 var addOne = function addOne() {
-    console.log("addOne");
+    count++;
+    renderCounterApp(); //we need to add it here to make it visible on the page
 };
 
 var minusOne = function minusOne() {
-    console.log("minusOne");
+    count--;
+    renderCounterApp();
 };
 
 var reset = function reset() {
-    console.log("reset");
+    count = 0;
+    renderCounterApp();
 };
 
 var templateThree = React.createElement(
@@ -130,3 +133,36 @@ console.log(templateThree);
 //class needs to be called className in JSX, as it's a reserved name in JS
 var appRoot1 = document.getElementById('app');
 ReactDOM.render(templateThree, appRoot1);
+
+//manual data binding:
+var renderCounterApp = function renderCounterApp() {
+    var templateThree = React.createElement(
+        "div",
+        null,
+        React.createElement(
+            "h1",
+            null,
+            "Count: ",
+            count
+        ),
+        React.createElement(
+            "button",
+            { onClick: addOne },
+            "+1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: minusOne },
+            "-1"
+        ),
+        React.createElement(
+            "button",
+            { onClick: reset },
+            "Reset"
+        )
+    );
+    var appRoot1 = document.getElementById('app');
+    ReactDOM.render(templateThree, appRoot1);
+};
+
+renderCounterApp();
