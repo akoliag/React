@@ -39,8 +39,12 @@ class Action extends React.Component {
 }
 
 class Options extends React.Component {
+    constructor(props){
+        super(props);
+        this.handleRemoveAll = this.handleRemoveAll.bind(this);//with bind we provide the right context every time we run handleRemoveAll
+    }
     handleRemoveAll(){
-        alert("some message");
+        console.log(this.props.options);
     }
     render() {
         return (
