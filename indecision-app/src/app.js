@@ -94,3 +94,7 @@ class AddOption extends React.Component {
 ReactDOM.render(<IndecisionApp/>, document.getElementById("app"));
 //we call React components using their names in html tags and they are reusable 
 //we can use them several times 
+
+//Component state allows our components to manage some data
+//when the data changes, the component will automatically rerender to reflect
+//this changes

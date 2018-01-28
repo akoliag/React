@@ -1,65 +1,51 @@
-console.log('App.js is running');
+class Counter extends React.Component {
+    constructor(props) {
+        super(props);
+        this.handleAddOne = this.handleAddOne.bind(this);
+        this.handleMinusOne = this.handleMinusOne.bind(this);
+        this.handleReset = this.handleReset.bind(this);
+        this.state = {
+            count: 0
+        };
+    }
+    handleAddOne() {
+        this.setState((prevState) => {
+            return {
+                count: prevState.count + 1
+            };
+        });
+    }
+    handleMinusOne() {
+        this.setState((prevState) => {
+            return {
+                count: prevState.count - 1
+            };
+        });
+    }
+    handleReset() {
+        this.setState(() => {
+            return {
+                count: 0
+            };
+        });
+    }
+    render(){
+        return (
+            <div>
+                <h1>Count: {this.state.count}</h1>
+                <button onClick={this.handleAddOne}>+1</button>
+                <button onClick={this.handleMinusOne}>-1</button>
+                <button onClick={this.handleReset}>Reset</button>
+            </div>
+        );
+    }
+}
 
-//JSX - JavaScript XML
+//setState method allows us to manipulate the state object and we will see
+//the component refresh automatically
+//prevState argument represents the object previous state
+//in Reset method we don't need prevState argument as we do not refer to that
+//we just provide the value we want
 
-const app = {
-    title: "Indecision App",
-    subtitle: "Put your life in the hands of a computer",
-    options: ["One", "Two"]
-};
-const template = (
-<div>
-    <h1>{app.title}</h1> 
-    {app.subtitle && <p>{app.subtitle}</p>}
-    <p>{app.options.length > 0 ? "Here are your options" : "No options"}</p>
-    <ol>
-        <li>Item one</li>
-        <li>Item two</li>
-    </ol>
-</div>
-);
 
-let count = 0;
-const addOne = () => {
-    count++;
-    renderCounterApp();//we need to add it here to make it visible on the page
-};
-
-const minusOne= () => {
-    count--;
-    renderCounterApp();
-};
-
-const reset = () => {
-    count = 0;
-    renderCounterApp();
-};
-
-const templateThree = (
-    <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne}>+1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={reset}>Reset</button>
-    </div>
-);
-console.log(templateThree);
-//class needs to be called className in JSX, as it's a reserved name in JS
-const appRoot1 = document.getElementById('app');
-ReactDOM.render(templateThree, appRoot1);
-
-//manual data binding:
-const renderCounterApp = () => {
-    const templateThree = (
-        <div>
-            <h1>Count: {count}</h1>
-            <button onClick={addOne}>+1</button>
-            <button onClick={minusOne}>-1</button>
-            <button onClick={reset}>Reset</button>
-        </div>
-    );
-    const appRoot1 = document.getElementById('app');
-    ReactDOM.render(templateThree, appRoot1);
-};
-
-renderCounterApp();
+ReactDOM.render(<Counter/>, document.getElementById('app'));
