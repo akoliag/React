@@ -61,13 +61,12 @@ var IndecisionApp = function (_React$Component) {
   }, {
     key: "render",
     value: function render() {
-      var title = 'IndecisioApp';
       var subtitle = 'Put your life in the hands of a computer';
 
       return React.createElement(
         "div",
         null,
-        React.createElement(Header, { title: title, subtitle: subtitle }),
+        React.createElement(Header, { subtitle: subtitle }),
         React.createElement(Action, {
           hasOptions: this.state.options.length > 0,
           handlePick: this.handlePick
@@ -95,13 +94,18 @@ var Header = function Header(props) {
       null,
       props.title
     ),
-    React.createElement(
+    props.subtitle && React.createElement(
       "h2",
       null,
       props.subtitle
     )
   );
 };
+
+Header.defaultProps = {
+  title: "Indecision App"
+};
+//this how we set a default prop for Header and it will show on every page if we do not set another value for a specific one 
 
 var Action = function Action(props) {
   return React.createElement(
