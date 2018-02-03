@@ -13,6 +13,18 @@ class IndecisionApp extends React.Component {
         options: []
       };
     }
+
+    componentDidMount() {
+      console.log('fetching data');
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+      console.log('saving data');
+    }
+
+    componentWillUnmount() {
+      console.log('componentWillUnmount');
+    }
     handleDeleteOptions() {
       this.setState(() => ({options: []}));
     }
@@ -184,3 +196,5 @@ class IndecisionApp extends React.Component {
 //Component state allows our components to manage some data
 //when the data changes, the component will automatically rerender to reflect
 //this changes
+
+//lifecycle methods are available only for class-based components not for stateless functional ones
