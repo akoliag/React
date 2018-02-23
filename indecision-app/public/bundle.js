@@ -71,26 +71,34 @@
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__utils_js__ = __webpack_require__(1);
 //import './utils.js'
-
+ //we need to import subtract this way as this is a default export not the named one
 console.log('app.js is running');
-console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* square */](4));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["c" /* square */](4));
 console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["a" /* add */](4, 67));
+console.log(__WEBPACK_IMPORTED_MODULE_0__utils_js__["b" /* default */](489, 67));
 
 /***/ }),
 /* 1 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return square; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return add; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return subtract; });
 //EXPORT - default export - named exports because we export them by name
 
 console.log('utils.js is running');
-//export {square, add}; - one way of exporting
+ //- one way of exporting
+//export const square = (x) => x * x ; //the second way of exporting - both are equally valid
 const square = (x) => x * x ;
-/* harmony export (immutable) */ __webpack_exports__["b"] = square;
- //the second way of exporting - both are equally valid
 const add = (a,b) => a + b;
-/* harmony export (immutable) */ __webpack_exports__["a"] = add;
 
+//default export
+const subtract = (a,b) => a - b;
+//export default subtract; - another way of calling export default
+//export default (a,b) => a - b; - another way of calling export default
+//we can only export one value as a default one (or 0 or 1)
+//we cannot call export default before a variable declaration
 
 /***/ })
 /******/ ]);
