@@ -13,7 +13,8 @@ module.exports = {
             test: /\.js$/, //which files we want to use this loader on
             exclude: /node_modules/
         }]
-    }
+    },
+    devtool: 'cheap-module-eval-source-map'
 };
 //loader lets us customize the behaviour of webpack when it loads a given file
 //babel-core allows us to run babel from webpack
