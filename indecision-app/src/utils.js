@@ -3,7 +3,7 @@
 console.log('utils.js is running');
 export {square, add, subtract as default }; //- one way of exporting
 //export const square = (x) => x * x ; //the second way of exporting - both are equally valid
-const square = (x) => x * x ;
+const square = x => x * x ;
 const add = (a,b) => a + b;
 
 //default export

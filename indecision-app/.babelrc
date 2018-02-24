@@ -1,0 +1,8 @@
+//configuaration file for babel presets in webpack 
+
+{
+"presets":[
+    "env",
+    "react"
+]
+}
