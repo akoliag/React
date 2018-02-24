@@ -1,4 +1,4 @@
-//EXPORT - default export - named exports because we export them by name
+//EXPORT - default export and named exports because we export them by name
 
 console.log('utils.js is running');
 export {square, add, subtract as default }; //- one way of exporting
