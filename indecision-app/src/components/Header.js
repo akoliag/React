@@ -12,6 +12,6 @@ const Header = props => {
 Header.defaultProps = {
   title: "Indecision App"
 };
-//this how we set a default prop for Header and it will show on every page if we do not set another value for a specific one
+//this is how we set a default prop for Header and it will show on every page if we do not set another value for a specific one
 
 export default Header;
