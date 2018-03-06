@@ -13,7 +13,7 @@ module.exports = {
             test: /\.js$/, //which files we want to use this loader on
             exclude: /node_modules/
         }, {
-            test: /\.scss$/,
+            test: /\.s?css$/, //question mark makes "s" optional so can be both css and scss
             use: [
                 'style-loader',
                 'css-loader',
