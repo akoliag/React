@@ -2,8 +2,8 @@ import React from 'react';
 
 ////we can use export default with class in line but not with the variables
 const Option = props => (
-  <div>
-    {props.optionText}
+  <div className="option"> 
+  <p className="option__text">{props.count}. {props.optionText}</p>
     <button
       className="button button--link"
       onClick={e => {
