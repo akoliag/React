@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import 'normalize.css/normalize.css';
 import './styles/styles.scss';
-import {BrowserRouter, Route} from 'react-router-dom';//BrowserRouter for creating a new router and Router for every single page
+import {BrowserRouter, Route, Switch} from 'react-router-dom';//BrowserRouter for creating a new router and Router for every single page
 
 
 const ExpenseDashboardPage = () => (
@@ -29,17 +29,25 @@ const HelpPage = () => (
     </div>   
 );
 
+const NotFoundPage = () => (
+    <div>
+        404!
+    </div>   
+);
+
 const routes = (
     <BrowserRouter>
-    <div>
+    <Switch>
         <Route path="/" component={ExpenseDashboardPage} exact={true}/> 
         <Route path="/create" component={AddExpensePage}/>
         <Route path="/edit" component={EditExpensePage}/>
         <Route path="/help" component={HelpPage}/>
-    </div>
+        <Route component={NotFoundPage}/>
+    </Switch>
     </BrowserRouter>
 );
 //exact will call only the page with exact route match
+//when we remove the path, React-Router always considers this a match so we don't  need to specify the paths of 404!
 
 ReactDOM.render(routes, document.getElementById("app"));
 
