@@ -24,7 +24,8 @@ module.exports = {
     },
     devtool: 'cheap-module-eval-source-map',
     devServer: {
-        contentBase: path.join(__dirname, 'public')
+        contentBase: path.join(__dirname, 'public'),
+        historyApiFallback: true //tells the server that we're gonna handle routing via the client server
     }
 };
 //loader lets us customize the behaviour of webpack when it loads a given file
