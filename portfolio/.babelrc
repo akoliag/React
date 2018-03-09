@@ -1,0 +1,14 @@
+//configuaration file for babel presets in webpack 
+
+{
+"presets":[
+    "env",
+    "react"
+],
+"plugins": [
+    "transform-class-properties"
+]
+}
+//transform-class-properties allows us to add properties directly on class
+//so we don't have to use a constructor function any more
+//and manually bind our handlers
