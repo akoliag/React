@@ -2,7 +2,7 @@
 const path = require('path');
 
 module.exports = {
-    entry: './src/app.js',
+    entry: './src/playground/redux-101.js',
     output: {
         path: path.join(__dirname, 'public'),
         filename: 'bundle.js'
@@ -26,6 +26,7 @@ module.exports = {
     devServer: {
         contentBase: path.join(__dirname, 'public'),
         historyApiFallback: true //tells the server that we're gonna handle routing via the client server
+        
     }
 };
 //loader lets us customize the behaviour of webpack when it loads a given file
